@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tickrmeter</title>
+
+    <script>
+      function postMessageToPopup(popup) {
+        const message = { connected: "true" };
+        //const allowedOrigins = ["http://localhost:9000", "https://tickrmeter.io", "http://tickr-ui.s3-website.us-east-2.amazonaws.com/"];
+
+        const origin =
+          window.location.protocol +
+          "//" +
+          window.location.hostname +
+          (window.location.port ? ":" + window.location.port : "");
+
+        popup.postMessage(message, origin);
+      }
+
+      function handleRedirection() {
+        // Ensure popup is a reference to the popup window.
+        var popup = window.opener;
+        if (popup) {
+          postMessageToPopup(popup);
+        }
+      }
+    </script>
+  </head>
+  <body onload="handleRedirection()">
+    Please wait ....
+  </body>
+</html>

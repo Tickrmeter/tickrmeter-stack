@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "Khula-ExtraBold";
+  src: url("Khula-ExtraBold.ttf.woff") format("woff"), url("Khula-ExtraBold.ttf.eot"),
+    url("Khula-ExtraBold.ttf.eot?#iefix") format("embedded-opentype");
+  font-weight: normal;
+  font-style: normal;
+}

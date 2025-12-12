@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@device-config/*": ["views/ConfigDeviceNew/*"],
+      "@src/*": ["*"],
+      "@components/*": ["@core/components/*"],
+      "@assets/*": ["@core/assets/*"],
+      "@layouts/*": ["@core/layouts/*"],
+      "@store/*": ["redux/*"],
+      "@styles/*": ["@core/scss/*"],
+      "@configs/*": ["configs/*"],
+      "@utils/*": ["utility/*"],
+      "@ui-hooks/*": ["utility/hooks/*"],
+      "@hooks/*": ["hooks/*"],
+      "@images/*": ["assets/images/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

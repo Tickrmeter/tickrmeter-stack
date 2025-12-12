@@ -1,0 +1,133 @@
+// Component popover-setup styles
+
+.setup-popover {
+  .popover {
+    min-width: 361px !important;
+    border-radius: 16px;
+  }
+
+  .popover-inner {
+    padding: 20px 24px;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .close-btn {
+    float: right;
+    background: none !important;
+    padding: 0;
+    border: none;
+    font-size: xx-large;
+    font-weight: 100;
+    position: relative;
+    bottom: 10px;
+    color: #B9B9C3 !important;
+    box-shadow: none !important;
+  }
+
+  .popover-header {
+    padding: 0;
+    border: none;
+    background: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 33px;
+    color: #000000;
+    //max-width: 253px;
+    margin-bottom: 6px;
+  }
+
+  .popover-body {
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #3D4246;
+    border: none;
+    max-width: 253px;
+    margin-bottom: 20px;
+  }
+
+  .popover-footer {
+    padding: 0;
+
+    .btn {
+      width: 92px;
+      height: 42px;
+      background: #0EB663;
+      border-radius: 6px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 9px 16px;
+      text-align: left;
+
+      &:hover {
+        transition: 0.25s;
+        box-shadow: 0 8px 25px -8px #0eb663;
+      }
+
+      svg {
+        float: right;
+      }
+    }
+  }
+}
+
+//specific styles per popover
+.Popover1 {
+  @media (min-width: 992px) {
+    .popover {
+      top: 95px !important;
+    }
+  }
+}
+
+.Popover2 {
+  z-index:111111;
+
+  .popover-footer .btn {
+    width: 115px;
+  }
+}
+
+.Popover3{
+  .popover-footer .btn {
+    width: 115px;
+  }
+}
+
+.Popover4, .Popover5, .Popover6{
+  @media (min-width: 992px) {
+    .popover {
+      left: 300px !important;
+    }
+  }
+
+  .popover-footer .btn {
+    width: 115px;
+  }
+}
+
+.Popover7{
+  @media (min-width: 992px) {
+    .popover {
+      left: 300px !important;
+    }
+  }
+
+  .popover-footer .btn {
+    width: 95px;
+  }
+}
+
+.dark-layout {
+  .popover {
+    background-color: #283046;
+    box-shadow: 0 0 10px 0 rgba(180, 180, 180, 0.38);
+  }
+}
