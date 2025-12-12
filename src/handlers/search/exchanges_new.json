@@ -1,0 +1,506 @@
+[
+  {
+    "name": "Abu Dhabi Securities Exchange",
+    "code": "ADX",
+    "country": "United Arab Emirates",
+    "mic_code": "XADS"
+  },
+  {
+    "name": "Argentine Stock Exchanges and Markets",
+    "code": "BYMA",
+    "country": "Argentina",
+    "mic_code": "XBUE"
+  },
+  {
+    "name": "Athens Stock Exchange",
+    "code": "ATHEX",
+    "country": "Greece",
+    "mic_code": "ASEX"
+  },
+  {
+    "name": "Australian Securities Exchange",
+    "code": "ASX",
+    "country": "Australia",
+    "mic_code": "XASX"
+  },
+  {
+    "name": "BX Swiss",
+    "code": "BX",
+    "country": "Switzerland",
+    "mic_code": "XBXO"
+  },
+  {
+    "name": "Bahrain Stock Exchange",
+    "code": "BHB",
+    "country": "Bahrain",
+    "mic_code": "XBHR"
+  },
+  {
+    "name": "Belgrade Stock Exchange",
+    "code": "BELEX",
+    "country": "Serbia",
+    "mic_code": "XBEL"
+  },
+  {
+    "name": "Berlin Stock Exchange",
+    "code": "BER",
+    "country": "Germany",
+    "mic_code": "XBER"
+  },
+  {
+    "name": "Bolsa Institucional de Valores",
+    "code": "BIVA",
+    "country": "Mexico",
+    "mic_code": "BIVA"
+  },
+  {
+    "name": "Bolsa de Madrid",
+    "code": "BME",
+    "country": "Spain",
+    "mic_code": "XMAD"
+  },
+  {
+    "name": "Bombay Stock Exchange",
+    "code": "BSE",
+    "country": "India",
+    "mic_code": "XBOM"
+  },
+  {
+    "name": "Borsa Istanbul",
+    "code": "BIST",
+    "country": "Turkey",
+    "mic_code": "XIST"
+  },
+  {
+    "name": "Bratislava Stock Exchange",
+    "code": "BSSE",
+    "country": "Slovakia",
+    "mic_code": "XBRA"
+  },
+  {
+    "name": "Brazil Stock Exchange",
+    "code": "B3",
+    "country": "Brazil",
+    "mic_code": "BVMF"
+  },
+  {
+    "name": "Bucharest Stock Exchange",
+    "code": "BVB",
+    "country": "Romania",
+    "mic_code": "XBSE"
+  },
+  {
+    "name": "Budapest Stock Exchange",
+    "code": "BET",
+    "country": "Hungary",
+    "mic_code": "XBUD"
+  },
+  {
+    "name": "Bursa Malaysia Berhad",
+    "code": "MYX",
+    "country": "Malaysia",
+    "mic_code": "XKLS"
+  },
+  {
+    "name": "Canadian Securities Exchange",
+    "code": "CSE",
+    "country": "Canada",
+    "mic_code": "CNSX"
+  },
+  {
+    "name": "Caracas Stock Exchange",
+    "code": "BVC",
+    "country": "Venezuela",
+    "mic_code": "BVCA"
+  },
+  {
+    "name": "Casablanca Stock Exchange",
+    "code": "CSE",
+    "country": "Morocco",
+    "mic_code": "XCAS"
+  },
+  {
+    "name": "Colombia Stock Exchange",
+    "code": "BVC",
+    "country": "Colombia",
+    "mic_code": "XBOG"
+  },
+
+  {
+    "name": "Cyprus Stock Exchange",
+    "code": "CSE",
+    "country": "Cyprus",
+    "mic_code": "XCYS"
+  },
+  {
+    "name": "Dhaka Stock Exchange",
+    "code": "DSE",
+    "country": "Bangladesh",
+    "mic_code": "XDHA"
+  },
+  {
+    "name": "Dubai Financial Market",
+    "code": "DFM",
+    "country": "United Arab Emirates",
+    "mic_code": "XDFM"
+  },
+  {
+    "name": "Dusseldorf Stock Exchange",
+    "code": "DUS",
+    "country": "Germany",
+    "mic_code": "XDUS"
+  },
+  {
+    "name": "Egyptian Exchange",
+    "code": "EGX",
+    "country": "Egypt",
+    "mic_code": "XCAI"
+  },
+  {
+    "name": "Euronext NV",
+    "code": "Euronext",
+    "country": "European Union",
+    "mic_code": "XPAR"
+  },
+
+  {
+    "name": "Deutsche Borse Xetra",
+    "code": "XETR",
+    "country": "Germany",
+    "mic_code": "XETR"
+  },
+  {
+    "name": "Frankfurt Stock Exchange",
+    "code": "XETR",
+    "country": "Germany",
+    "mic_code": "XFRA"
+  },
+
+  {
+    "name": "Hamburg Stock Exchange",
+    "code": "HAM",
+    "country": "Germany",
+    "mic_code": "XHAM"
+  },
+  {
+    "name": "Hang Seng Indexes",
+    "code": "HKEX",
+    "country": "Hong Kong",
+    "mic_code": "XHKG"
+  },
+  {
+    "name": "Hannover Stock Exchange",
+    "code": "HAN",
+    "country": "Germany",
+    "mic_code": "XHAN"
+  },
+  {
+    "name": "Indonesia Stock Exchange",
+    "code": "IDX",
+    "country": "Indonesia",
+    "mic_code": "XIDX"
+  },
+  {
+    "name": "Johannesburg Stock Exchange (Derived Data)",
+    "code": "JSE",
+    "country": "South Africa",
+    "mic_code": "XJSE"
+  },
+  {
+    "name": "Korea Stock Exchange",
+    "code": "KRX",
+    "country": "South Korea",
+    "mic_code": "XKRX"
+  },
+  {
+    "name": "London Stock Exchange (UK Companies)",
+    "code": "LSE",
+    "country": "United Kingdom",
+    "mic_code": "XLON"
+  },
+  {
+    "name": "Luxembourg Stock Exchange",
+    "code": "LuxSE",
+    "country": "Luxembourg",
+    "mic_code": "XLUX"
+  },
+  {
+    "name": "NASDAQ Stock Market",
+    "code": "NASDAQ",
+    "country": "USA",
+    "mic_code": "XNAS"
+  },
+  {
+    "name": "New York Stock Exchange",
+    "code": "NYSE",
+    "country": "USA",
+    "mic_code": "XNYS"
+  },
+  {
+    "name": "SIX Swiss Exchange",
+    "code": "SIX",
+    "country": "Switzerland",
+    "mic_code": "XSWX"
+  },
+  {
+    "name": "Singapore Exchange",
+    "code": "SGX",
+    "country": "Singapore",
+    "mic_code": "XSES"
+  },
+  {
+    "name": "Tokyo Stock Exchange",
+    "code": "TSE",
+    "country": "Japan",
+    "mic_code": "XTKS"
+  },
+  {
+    "name": "Toronto Stock Exchange",
+    "code": "TSX",
+    "country": "Canada",
+    "mic_code": "XTSE"
+  },
+  {
+    "name": "TSX Venture Exchange",
+    "code": "TSXV",
+    "country": "Canada",
+    "mic_code": "XTSX"
+  },
+  {
+    "name": "Multi Commodity Exchange",
+    "code": "MCX",
+    "country": "India",
+    "mic_code": "XMCX"
+  },
+  {
+    "name": "Munich Stock Exchange",
+    "code": "MUN",
+    "country": "Germany",
+    "mic_code": "XMUN"
+  },
+  {
+    "name": "NASDAQ Dubai",
+    "code": "NASDAQ Dubai",
+    "country": "United Arab Emirates",
+    "mic_code": "XNAS"
+  },
+
+  {
+    "name": "Nagoya Stock Exchange",
+    "code": "NSE",
+    "country": "Japan",
+    "mic_code": "XNGY"
+  },
+  {
+    "name": "Nairobi Securities Exchange",
+    "code": "NSE",
+    "country": "Kenya",
+    "mic_code": "XNAI"
+  },
+
+  {
+    "name": "National Stock Exchange of India",
+    "code": "NSE",
+    "country": "India",
+    "mic_code": "XNSE"
+  },
+  {
+    "name": "New Zealand Exchange",
+    "code": "NZX",
+    "country": "New Zealand",
+    "mic_code": "XNZE"
+  },
+  {
+    "name": "Nigerian Stock Exchange",
+    "code": "NSE",
+    "country": "Nigeria",
+    "mic_code": "XNSA"
+  },
+  {
+    "name": "Nordic Growth Market",
+    "code": "NGM",
+    "country": "Sweden",
+    "mic_code": "XNGM"
+  },
+  {
+    "name": "OTC Markets",
+    "code": "OTC",
+    "country": "USA",
+    "mic_code": "OTCM"
+  },
+  {
+    "name": "Pakistan Stock Exchange",
+    "code": "PSX",
+    "country": "Pakistan",
+    "mic_code": "XPSX"
+  },
+  {
+    "name": "Philippine Stock Exchange",
+    "code": "PSE",
+    "country": "Philippines",
+    "mic_code": "XPHS"
+  },
+  {
+    "name": "Prague Stock Exchange",
+    "code": "PSECZ",
+    "country": "Czech Republic",
+    "mic_code": "XPRA"
+  },
+  {
+    "name": "Qatar Stock Exchange",
+    "code": "QSE",
+    "country": "Qatar",
+    "mic_code": "XQAT"
+  },
+  {
+    "name": "Santiago Stock Exchange",
+    "code": "SSE",
+    "country": "Chile",
+    "mic_code": "XSGO"
+  },
+  {
+    "name": "Saudi Exchange",
+    "code": "Tadawul",
+    "country": "Saudi Arabia",
+    "mic_code": "XSAU"
+  },
+
+  {
+    "name": "Shanghai Stock Exchange",
+    "code": "SSE",
+    "country": "China",
+    "mic_code": "XSHG"
+  },
+  {
+    "name": "Shenzhen Stock Exchange",
+    "code": "SZSE",
+    "country": "China",
+    "mic_code": "XSHE"
+  },
+  {
+    "name": "Stock Exchange of Thailand",
+    "code": "SET",
+    "country": "Thailand",
+    "mic_code": "XBKK"
+  },
+  {
+    "name": "Stuttgart Stock Exchange",
+    "code": "SWB",
+    "country": "Germany",
+    "mic_code": "XSTU"
+  },
+  {
+    "name": "Taipei Exchange",
+    "code": "TPEx",
+    "country": "Taiwan",
+    "mic_code": "ROCO"
+  },
+  {
+    "name": "Taiwan Stock Exchange",
+    "code": "TWSE",
+    "country": "Taiwan",
+    "mic_code": "XTAI"
+  },
+  {
+    "name": "Tel Aviv Stock Exchange",
+    "code": "TASE",
+    "country": "Israel",
+    "mic_code": "XTAE"
+  },
+  {
+    "name": "The Stock Exchange of Hong Kong",
+    "code": "SEHK",
+    "country": "Hong Kong",
+    "mic_code": "XHKG"
+  },
+  {
+    "name": "Tokyo Commodity Exchange",
+    "code": "TOCOM",
+    "country": "Japan",
+    "mic_code": "XTOC"
+  },
+  {
+    "name": "Tokyo Stock Exchange",
+    "code": "TSE",
+    "country": "Japan",
+    "mic_code": "XTKS"
+  },
+  {
+    "name": "Tradegate Exchange",
+    "code": "Tradegate Exchange",
+    "country": "Germany",
+    "mic_code": "XBER"
+  },
+  {
+    "name": "Tunis Stock Exchange",
+    "code": "BVMT",
+    "country": "Tunisia",
+    "mic_code": "XTUN"
+  },
+  {
+    "name": "Turquoise",
+    "code": "Turquoise",
+    "country": "United Kingdom",
+    "mic_code": "TRQX"
+  },
+  {
+    "name": "Vienna Stock Exchange",
+    "code": "WB",
+    "country": "Austria",
+    "mic_code": "XWBO"
+  },
+  {
+    "name": "Warsaw Stock Exchange",
+    "code": "GPW",
+    "country": "Poland",
+    "mic_code": "XWAR"
+  },
+  {
+    "name": "Copenhagen Stock Exchange",
+    "code": "OMXCOP",
+    "mic_code": "XCSE",
+    "country": "Denmark"
+  },
+  {
+    "name": "Stockholm Stock Exchange",
+    "code": "OMXSTO",
+    "mic_code": "XSTO",
+    "country": "Sweden"
+  },
+  {
+    "name": "Helsinki Stock Exchange",
+    "code": "OMXHEX",
+    "mic_code": "XHEL",
+    "country": "Finland"
+  },
+  {
+    "name": "Oslo Stock Exchange",
+    "code": "OSL",
+    "mic_code": "XOSL",
+    "country": "Norway"
+  },
+  {
+    "name": "Iceland Stock Exchange",
+    "code": "OMXICE",
+    "mic_code": "XICE",
+    "country": "Iceland"
+  },
+  {
+    "name": "Tallinn Stock Exchange",
+    "code": "OMXTAL",
+    "mic_code": "XTAL",
+    "country": "Estonia"
+  },
+  {
+    "name": "Riga Stock Exchange",
+    "code": "OMXRIG",
+    "mic_code": "XRIS",
+    "country": "Latvia"
+  },
+  {
+    "name": "Vilnius Stock Exchange",
+    "code": "OMXVIL",
+    "mic_code": "XLIT",
+    "country": "Lithuania"
+  }
+]

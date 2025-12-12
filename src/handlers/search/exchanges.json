@@ -1,0 +1,369 @@
+[
+  { "name": "Argentine Stock Exchanges and Markets", "code": "BYMA", "country": "Argentina", "cc": "ARG" },
+  { "name": "Australian Securities Exchange", "code": "ASX", "country": "Australia", "cc": "AUS" },
+  { "name": "Vienna Stock Exchange", "code": "WB", "country": "Austria", "cc": "AUT" },
+  { "name": "Bahrain Stock Exchange", "code": "BHB", "country": "Bahrain", "cc": "BHR" },
+  { "name": "Dhaka Stock Exchange", "code": "DSE", "country": "Bangladesh", "cc": "BGD" },
+  { "name": "Brazil Stock Exchange", "code": "B3", "country": "Brazil", "cc": "BRA" },
+  { "name": "Canadian Securities Exchange", "code": "CSE", "country": "Canada", "cc": "CAN" },
+  { "name": "Toronto Stock Exchange", "code": "TSX", "country": "Canada", "cc": "CAN" },
+  { "name": "TSX Venture Exchange", "code": "TSXV", "country": "Canada", "cc": "CAN" },
+  { "name": "Santiago Stock Exchange", "code": "SSE", "country": "Chile", "cc": "CHL" },
+  { "name": "Shanghai Stock Exchange", "code": "SSE", "country": "China", "cc": "CHN" },
+  { "name": "Shenzhen Stock Exchange", "code": "SZSE", "country": "China", "cc": "CHN" },
+  { "name": "Colombia Stock Exchange", "code": "BVC", "country": "Colombia", "cc": "COL" },
+  { "name": "Cyprus Stock Exchange", "code": "CSE", "country": "Cyprus", "cc": "CYP" },
+  { "name": "Prague Stock Exchange", "code": "PSE", "country": "Czech Republic", "cc": "CZE" },
+  { "name": "Copenhagen Stock Exchange", "code": "OMXCOP", "country": "Denmark", "cc": "DNK" },
+  { "name": "Egyptian Exchange", "code": "EGX", "country": "Egypt", "cc": "EGY" },
+  { "name": "Tallinn Stock Exchange", "code": "OMXTAL", "country": "Estonia", "cc": "EST" },
+  { "name": "Euronext NV", "code": "Euronext", "country": "European Union", "cc": "EU" },
+  { "name": "Helsinki Stock Exchange", "code": "OMXHEL", "country": "Finland", "cc": "FIN" },
+  { "name": "Berlin Stock Exchange", "code": "BER", "country": "Germany", "cc": "DEU" },
+  { "name": "Deutsche Borse Xetra", "code": "XETR", "country": "Germany", "cc": "DEU" },
+  { "name": "Dusseldorf Stock Exchange", "code": "DUS", "country": "Germany", "cc": "DEU" },
+  { "name": "Frankfurt Stock Exchange", "code": "FWB", "country": "Germany", "cc": "DEU" },
+  { "name": "Hamburg Stock Exchange", "code": "HAM", "country": "Germany", "cc": "DEU" },
+  {
+    "name": "Hannover Stock Exchange",
+    "code": "HAN",
+    "country": "Germany",
+    "cc": "DEU"
+  },
+  {
+    "name": "Munich Stock Exchange",
+    "code": "MUN",
+    "country": "Germany",
+    "cc": "DEU"
+  },
+  {
+    "name": "Stuttgart Stock Exchange",
+    "code": "SWB",
+    "country": "Germany",
+    "cc": "DEU"
+  },
+  {
+    "name": "Tradegate Exchange",
+    "code": "Tradegate Exchange",
+    "country": "Germany",
+    "cc": "DEU"
+  },
+  {
+    "name": "Athens Stock Exchange",
+    "code": "ATHEX",
+    "country": "Greece",
+    "cc": "GRC"
+  },
+  {
+    "name": "Hang Seng Indexes",
+    "code": "HSI",
+    "country": "Hong Kong",
+    "cc": "HKG"
+  },
+  {
+    "name": "The Stock Exchange of Hong Kong",
+    "code": "SEHK",
+    "country": "Hong Kong",
+    "cc": "HKG"
+  },
+  {
+    "name": "Budapest Stock Exchange",
+    "code": "BET",
+    "country": "Hungary",
+    "cc": "HUN"
+  },
+  {
+    "name": "Iceland Stock Exchange",
+    "code": "OMXICE",
+    "country": "Iceland",
+    "cc": "ISL"
+  },
+  {
+    "name": "Bombay Stock Exchange",
+    "code": "BSE",
+    "country": "India",
+    "cc": "IND"
+  },
+  {
+    "name": "Multi Commodity Exchange",
+    "code": "MCX",
+    "country": "India",
+    "cc": "IND"
+  },
+  {
+    "name": "National Stock Exchange of India",
+    "code": "NSE",
+    "country": "India",
+    "cc": "IND"
+  },
+  {
+    "name": "Indonesia Stock Exchange",
+    "code": "IDX",
+    "country": "Indonesia",
+    "cc": "IDN"
+  },
+  {
+    "name": "Tel Aviv Stock Exchange",
+    "code": "TASE",
+    "country": "Israel",
+    "cc": "ISR"
+  },
+  {
+    "name": "Nagoya Stock Exchange",
+    "code": "NSE",
+    "country": "Japan",
+    "cc": "JPN"
+  },
+  {
+    "name": "Tokyo Commodity Exchange",
+    "code": "TOCOM",
+    "country": "Japan",
+    "cc": "JPN"
+  },
+  {
+    "name": "Tokyo Stock Exchange",
+    "code": "TSE",
+    "country": "Japan",
+    "cc": "JPN"
+  },
+  {
+    "name": "Nairobi Securities Exchange",
+    "code": "NSE",
+    "country": "Kenya KEN",
+    "cc": ""
+  },
+  {
+    "name": "Riga Stock Exchange",
+    "code": "OMXRIG",
+    "country": "Latvia",
+    "cc": "LVA"
+  },
+  {
+    "name": "Vilnius Stock Exchange",
+    "code": "OMXVIL",
+    "country": "Lithuania",
+    "cc": "LTU"
+  },
+  {
+    "name": "Luxembourg Stock Exchange",
+    "code": "LuxSE",
+    "country": "Luxembourg",
+    "cc": "LUX"
+  },
+  {
+    "name": "Bursa Malaysia Berhad",
+    "code": "MYX",
+    "country": "Malaysia",
+    "cc": "MYS"
+  },
+  {
+    "name": "Bolsa Institucional de Valores",
+    "code": "BIVA",
+    "country": "Mexico",
+    "cc": "MEX"
+  },
+  {
+    "name": "Casablanca Stock Exchange",
+    "code": "CSE",
+    "country": "Morocco MAR",
+    "cc": ""
+  },
+  {
+    "name": "New Zealand Exchange",
+    "code": "NZX",
+    "country": "New Zealand",
+    "cc": "NZL"
+  },
+  {
+    "name": "Nigerian Stock Exchange",
+    "code": "NSE",
+    "country": "Nigeria NGA",
+    "cc": ""
+  },
+  {
+    "name": "Oslo Stock Exchange",
+    "code": "OSEBX",
+    "country": "Norway",
+    "cc": "NOR"
+  },
+  {
+    "name": "Pakistan Stock Exchange",
+    "code": "PSX",
+    "country": "Pakistan",
+    "cc": "PAK"
+  },
+  {
+    "name": "Philippine Stock Exchange",
+    "code": "PSE",
+    "country": "Philippines",
+    "cc": "PHL"
+  },
+  {
+    "name": "Warsaw Stock Exchange",
+    "code": "GPW",
+    "country": "Poland",
+    "cc": "POL"
+  },
+  {
+    "name": "Qatar Stock Exchange",
+    "code": "QSE",
+    "country": "Qatar",
+    "cc": "QAT"
+  },
+  {
+    "name": "Bucharest Stock Exchange",
+    "code": "BVB",
+    "country": "Romania",
+    "cc": "ROU"
+  },
+  {
+    "name": "Saudi Exchange",
+    "code": "Tadawul",
+    "country": "Saudi Arabia SAU",
+    "cc": ""
+  },
+  {
+    "name": "Belgrade Stock Exchange",
+    "code": "BELEX",
+    "country": "Serbia",
+    "cc": "SRB"
+  },
+  {
+    "name": "Singapore Exchange",
+    "code": "SGX",
+    "country": "Singapore",
+    "cc": "SGP"
+  },
+  {
+    "name": "Bratislava Stock Exchange",
+    "code": "BSSE",
+    "country": "Slovakia",
+    "cc": "SVK"
+  },
+  {
+    "name": "Johannesburg Stock Exchange",
+    "code": "JSE",
+    "country": "South Africa",
+    "cc": "ZAF"
+  },
+  {
+    "name": "Korea Stock Exchange",
+    "code": "KRX",
+    "country": "South Korea",
+    "cc": "KOR"
+  },
+  {
+    "name": "Bolsa de Madrid",
+    "code": "BME",
+    "country": "Spain",
+    "cc": "ESP"
+  },
+  {
+    "name": "Nordic Growth Market",
+    "code": "NGM",
+    "country": "Sweden",
+    "cc": "SWE"
+  },
+  {
+    "name": "Stockholm Stock Exchange",
+    "code": "OMXSTO",
+    "country": "Sweden",
+    "cc": "SWE"
+  },
+  {
+    "name": "BX Swiss",
+    "code": "BX",
+    "country": "Switzerland",
+    "cc": "CHE"
+  },
+  {
+    "name": "SIX Swiss Exchange",
+    "code": "SIX",
+    "country": "Switzerland",
+    "cc": "CHE"
+  },
+  {
+    "name": "Taipei Exchange",
+    "code": "TPEx",
+    "country": "Taiwan",
+    "cc": "TWN"
+  },
+  {
+    "name": "Taiwan Stock Exchange",
+    "code": "TWSE",
+    "country": "Taiwan",
+    "cc": "TWN"
+  },
+  {
+    "name": "Stock Exchange of Thailand",
+    "code": "SET",
+    "country": "Thailand",
+    "cc": "THA"
+  },
+  {
+    "name": "Tunis Stock Exchange",
+    "code": "BVMT",
+    "country": "Tunisia TUN",
+    "cc": ""
+  },
+  {
+    "name": "Borsa Istanbul",
+    "code": "BIST",
+    "country": "Turkey",
+    "cc": "TUR"
+  },
+  {
+    "name": "Abu Dhabi Securities Exchange",
+    "code": "ADX",
+    "country": "United Arab Emirates",
+    "cc": "ARE"
+  },
+  {
+    "name": "Dubai Financial Market",
+    "code": "DFM",
+    "country": "United Arab Emirates",
+    "cc": "ARE"
+  },
+  {
+    "name": "NASDAQ Dubai",
+    "code": "NASDAQ Dubai",
+    "country": "United Arab Emirates",
+    "cc": "ARE"
+  },
+  {
+    "name": "London Stock Exchange",
+    "code": "LSE",
+    "country": "United Kingdom",
+    "cc": "GBR"
+  },
+  {
+    "name": "Turquoise",
+    "code": "Turquoise",
+    "country": "United Kingdom",
+    "cc": "GBR"
+  },
+  {
+    "name": "OTC Markets",
+    "code": "OTC",
+    "country": "USA USA",
+    "cc": ""
+  },
+  {
+    "name": "NASDAQ Stock Market",
+    "code": "NASDAQ",
+    "country": "USA",
+    "cc": "USA"
+  },
+  {
+    "name": "New York Stock Exchange",
+    "code": "NYSE",
+    "country": "USA",
+    "cc": "USA"
+  },
+  {
+    "name": "Caracas Stock Exchange",
+    "code": "BVC",
+    "country": "Venezuela",
+    "cc": "VEN"
+  }
+]
