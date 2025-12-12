@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="296"
+   height="128"
+   viewBox="0 0 296 128"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="screen3.svg"
+   inkscape:export-filename="screen3.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="16.000001"
+     inkscape:cx="212.53124"
+     inkscape:cy="125.28124"
+     inkscape:document-units="mm"
+     inkscape:current-layer="svg8"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:export-bgcolor="#ffffffff">
+    <inkscape:grid
+       id="grid4"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#3f3fff"
+       empopacity="0.25098039"
+       color="#3f3fff"
+       opacity="0.1254902"
+       empspacing="5"
+       enabled="true"
+       visible="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="fill:none;stroke-width:0.767244;stroke-linecap:round"
+     id="mainrec"
+     width="246"
+     height="128"
+     x="50"
+     y="0" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:19.7333px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:0.900471"
+     x="59.060661"
+     y="19"
+     id="Field1-4"
+     inkscape:label="#text1432">STREAMS</text>
+  <rect
+     y="0"
+     x="0"
+     height="128"
+     width="50"
+     id="Dark"
+     style="opacity:1;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.809693;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     id="up"
+     d="m 229.84901,114.74491 -4.28971,-4.28971 c -0.40625,-0.37902 -0.69743,-0.38683 -1.07243,0 l -4.28971,4.28971 1.07243,1.07243 3.21728,-3.21729 v 11.79672 h 1.07243 v -11.79672 l 3.21728,3.21729 z"
+     inkscape:connector-curvature="0"
+     style="stroke:#000000;stroke-width:1.22487;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="ccccccccccc" />
+  <text
+     xml:space="preserve"
+     style="font-weight:600;font-size:21px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Semi-Bold';text-align:end;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.18068"
+     id="Raise"
+     inkscape:label="#text1432"
+     y="125"
+     x="293">1.85%</text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Semi-Bold';text-align:end;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1"
+     x="293"
+     y="18"
+     id="Time"
+     inkscape:label="#text1432">16:43</text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:40px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:2.24519"
+     x="58"
+     y="62"
+     id="Number"
+     inkscape:label="#text1432">524 124 195</text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:16px;line-height:1.25;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:left;letter-spacing:0px;word-spacing:0px"
+     x="58.541592"
+     y="105"
+     id="Title">Please Please Please ft.</text>
+  <path
+     fill="#1ed760"
+     d="m 24.994644,41.816833 c -10.236507,0 -18.543855,8.307348 -18.543855,18.543855 0,10.236507 8.307348,18.543855 18.543855,18.543855 10.236508,0 18.543856,-8.307348 18.543856,-18.543855 0,-10.236507 -8.307348,-18.543855 -18.543856,-18.543855 z"
+     id="path1"
+     style="stroke-width:0.0747736;fill:#ffffff" />
+  <path
+     d="m 36.853739,58.498825 c -0.388823,0 -0.628098,-0.0972 -0.96458,-0.291617 -5.323881,-3.177878 -14.842561,-3.940569 -21.003907,-2.220776 -0.269185,0.07477 -0.605666,0.194411 -0.964579,0.194411 -0.987012,0 -1.742225,-0.770168 -1.742225,-1.764657 0,-1.016921 0.628098,-1.592678 1.30106,-1.787089 2.632031,-0.770168 5.578112,-1.136559 8.7859,-1.136559 5.458473,0 11.178654,1.136559 15.358499,3.574179 0.583234,0.336481 0.96458,0.800077 0.96458,1.689883 0,1.016921 -0.82251,1.742225 -1.734748,1.742225 z m -2.317982,5.697749 c -0.388823,0 -0.65053,-0.171979 -0.919715,-0.314049 -4.673351,-2.766623 -11.642252,-3.88075 -17.840984,-2.198344 -0.358913,0.09721 -0.553325,0.194411 -0.889806,0.194411 -0.800077,0 -1.450608,-0.65053 -1.450608,-1.450608 0,-0.800077 0.388823,-1.33097 1.158991,-1.547813 2.078707,-0.583234 4.202277,-1.016921 7.312859,-1.016921 4.852807,0 9.541113,1.203855 13.234929,3.402199 0.605666,0.358913 0.844942,0.82251 0.844942,1.47304 -0.0075,0.807555 -0.635576,1.458085 -1.450608,1.458085 z m -2.01141,4.905149 c -0.314049,0 -0.508461,-0.09721 -0.800078,-0.269185 -4.665873,-2.811488 -10.094437,-2.931125 -15.455705,-1.831953 -0.291617,0.07477 -0.672962,0.194411 -0.889806,0.194411 -0.725304,0 -1.181423,-0.575757 -1.181423,-1.181423 0,-0.770168 0.456119,-1.136559 1.016921,-1.256197 6.123959,-1.353402 12.38251,-1.233764 17.721346,1.959069 0.456119,0.291617 0.725304,0.553325 0.725304,1.233765 0,0.680439 -0.530893,1.151513 -1.136559,1.151513 z"
+     id="path2"
+     style="stroke-width:0.0747736" />
+  <text
+     xml:space="preserve"
+     style="font-weight:800;font-size:20px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans, Ultra-Bold';text-align:start;text-anchor:start;fill:#000000;fill-opacity:1"
+     x="59.161663"
+     y="85.77903"
+     id="Artist"
+     inkscape:label="#text1432">Sabrina Carpenter</text>
+  <path
+     id="down"
+     d="m 220.19716,119.81986 4.28971,4.28971 c 0.40625,0.37902 0.69743,0.38683 1.07243,0 l 4.28971,-4.28971 -1.07243,-1.07243 -3.21728,3.21729 V 110.168 h -1.07243 v 11.79672 l -3.21728,-3.21729 z"
+     inkscape:connector-curvature="0"
+     style="stroke:#000000;stroke-width:1.22487;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     sodipodi:nodetypes="ccccccccccc" />
+</svg>
