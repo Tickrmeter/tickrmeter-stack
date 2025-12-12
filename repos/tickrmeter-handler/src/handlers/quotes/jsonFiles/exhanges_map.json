@@ -1,0 +1,18 @@
+{
+  "au": { "name": "Australian Securities Exchange", "code": "ASX", "country": "Australia" },
+  "be": { "name": "Euronext Brussels", "code": "EURONEXT", "country": "Belgium" },
+  "ca": { "name": "Toronto Stock Exchange", "code": "TSX", "country": "Canada" },
+  "cz": { "name": "Prague Stock Exchange", "code": "PSECZ", "country": "Czech Republic" },
+  "de": { "name": "Frankfurt Stock Exchange", "code": "XETR", "country": "Germany" },
+  "dk": { "name": "Copenhagen Stock Exchange", "code": "OMXCOP", "country": "Denmark" },
+  "fi": { "name": "Helsinki Stock Exchange", "code": "OMXHEX", "country": "Finland" },
+  "fr": { "name": "Euronext Paris", "code": "EURONEXT", "country": "France" },
+  "hk": { "name": "Hong Kong Stock Exchange", "code": "HKEX", "country": "Hong Kong" },
+  "il": { "name": "Tel Aviv Stock Exchange", "code": "TASE", "country": "Israel" },
+  "nl": { "name": "Euronext Amsterdam", "code": "EURONEXT", "country": "Netherlands" },
+  "no": { "name": "Oslo Stock Exchange", "code": "OSL", "country": "Norway" },
+  "se": { "name": "Stockholm Stock Exchange", "code": "OMXSTO", "country": "Sweden" },
+  "sw": { "name": "Swiss Exchange", "code": "SIX", "country": "Switzerland" },
+  "uk": { "name": "London Stock Exchange", "code": "LSE", "country": "United Kingdom" },
+  "us": { "name": "New York Stock Exchange", "code": "NASDAQ", "country": "United States" }
+}

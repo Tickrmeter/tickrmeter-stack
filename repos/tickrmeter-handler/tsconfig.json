@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2017",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "outDir": "build",
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./src/@types", "node_modules/@types"]
+  },
+  "lib": ["es2015"],
+  "include": ["src"]
+}
