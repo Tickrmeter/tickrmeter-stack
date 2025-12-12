@@ -1,0 +1,326 @@
+{
+  "id": null,
+  "title": "TickrMeter Statistics",
+  "tags": ["tickrmeter"],
+  "style": "dark",
+  "timezone": "browser",
+  "panels": [
+    {
+      "id": 1,
+      "title": "Stock Update Request Rate",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "sum(rate(tickrmeter_stock_update_requests_total[5m])) * 60",
+          "legendFormat": "Requests/min"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short",
+          "decimals": 1
+        }
+      },
+      "gridPos": {"h": 6, "w": 4, "x": 0, "y": 0}
+    },
+    {
+      "id": 2,
+      "title": "Timeout Rate",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "rate(tickrmeter_stock_update_timeout_total[5m]) * 60",
+          "legendFormat": "Timeouts/min"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 10},
+              {"color": "red", "value": 30}
+            ]
+          },
+          "unit": "short",
+          "decimals": 2
+        }
+      },
+      "gridPos": {"h": 6, "w": 4, "x": 4, "y": 0}
+    },
+    {
+      "id": 3,
+      "title": "Total Timeouts",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "tickrmeter_stock_update_timeout_total",
+          "legendFormat": "Total Timeouts"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short"
+        }
+      },
+      "gridPos": {"h": 6, "w": 4, "x": 8, "y": 0}
+    },
+    {
+      "id": 4,
+      "title": "Success Rate",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "sum(rate(tickrmeter_stock_update_responses_total[5m])) / (sum(rate(tickrmeter_stock_update_requests_total[5m])) + rate(tickrmeter_stock_update_timeout_total[5m])) * 100",
+          "legendFormat": "Success %"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "red", "value": null},
+              {"color": "yellow", "value": 80},
+              {"color": "green", "value": 95}
+            ]
+          },
+          "unit": "percent",
+          "max": 100,
+          "min": 0,
+          "decimals": 1
+        }
+      },
+      "gridPos": {"h": 6, "w": 4, "x": 12, "y": 0}
+    },
+    {
+      "id": 5,
+      "title": "Devices Online",
+      "type": "stat",
+      "targets": [
+        {
+          "expr": "sum(tickrmeter_devices_online)",
+          "legendFormat": "Online Devices"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short"
+        }
+      },
+      "gridPos": {"h": 6, "w": 4, "x": 16, "y": 0}
+    },
+    {
+      "id": 6,
+      "title": "Device Online Rate",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(tickrmeter_devices_online)",
+          "legendFormat": "Online Devices"
+        },
+        {
+          "expr": "sum(increase(tickrmeter_devices_online[5m]))",
+          "legendFormat": "New Connections (5m)"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short"
+        }
+      },
+      "gridPos": {"h": 6, "w": 4, "x": 20, "y": 0}
+    },
+    {
+      "id": 7,
+      "title": "Request & Response Rates",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "sum(rate(tickrmeter_stock_update_requests_total[5m])) * 60",
+          "legendFormat": "Requests/min"
+        },
+        {
+          "expr": "sum(rate(tickrmeter_stock_update_responses_total[5m])) * 60",
+          "legendFormat": "Responses/min"
+        },
+        {
+          "expr": "rate(tickrmeter_stock_update_timeout_total[5m]) * 60",
+          "legendFormat": "Timeouts/min"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short"
+        }
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 6}
+    },
+    {
+      "id": 8,
+      "title": "Devices by Firmware Version",
+      "type": "piechart",
+      "targets": [
+        {
+          "expr": "sum by (firmware) (tickrmeter_firmware_distribution)",
+          "legendFormat": "{{firmware}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short"
+        }
+      },
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "pieType": "pie",
+        "tooltip": {"mode": "single"},
+        "legend": {
+          "displayMode": "visible",
+          "placement": "bottom"
+        }
+      },
+      "gridPos": {"h": 8, "w": 6, "x": 12, "y": 6}
+    },
+    {
+      "id": 9,
+      "title": "Devices by Flash ID",
+      "type": "piechart",
+      "targets": [
+        {
+          "expr": "sum by (flash_id) (tickrmeter_flash_id_distribution)",
+          "legendFormat": "{{flash_id}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "short"
+        }
+      },
+      "options": {
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "pieType": "pie",
+        "tooltip": {"mode": "single"},
+        "legend": {
+          "displayMode": "visible",
+          "placement": "bottom"
+        }
+      },
+      "gridPos": {"h": 8, "w": 6, "x": 18, "y": 6}
+    },
+    {
+      "id": 10,
+      "title": "Top 10 Slowest Symbols (Avg Latency)",
+      "type": "bargauge",
+      "targets": [
+        {
+          "expr": "topk(10, tickrmeter_stock_update_avg_latency_seconds)",
+          "legendFormat": "{{symbol}}",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "thresholds"},
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {"color": "green", "value": null},
+              {"color": "yellow", "value": 2},
+              {"color": "red", "value": 5}
+            ]
+          },
+          "unit": "s",
+          "decimals": 2
+        }
+      },
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "values": false,
+          "calcs": ["lastNotNull"],
+          "fields": ""
+        },
+        "displayMode": "basic",
+        "showUnfilled": true
+      },
+      "transformations": [
+        {
+          "id": "sortBy",
+          "options": {
+            "sort": [
+              {
+                "field": "Value",
+                "desc": true
+              }
+            ]
+          }
+        }
+      ],
+      "gridPos": {"h": 8, "w": 12, "x": 0, "y": 14}
+    },
+    {
+      "id": 11,
+      "title": "Response Latency P95 by Symbol",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "topk(5, tickrmeter_stock_update_p95_latency_seconds)",
+          "legendFormat": "{{symbol}} P95"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "s"
+        }
+      },
+      "gridPos": {"h": 8, "w": 12, "x": 12, "y": 14}
+    },
+    {
+      "id": 12,
+      "title": "Symbol Response Rates",
+      "type": "timeseries",
+      "targets": [
+        {
+          "expr": "topk(10, tickrmeter_symbol_response_rate)",
+          "legendFormat": "{{symbol}} Rate"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {"mode": "palette-classic"},
+          "unit": "percentunit",
+          "max": 1,
+          "min": 0
+        }
+      },
+      "gridPos": {"h": 8, "w": 24, "x": 0, "y": 22}
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "refresh": "30s",
+  "schemaVersion": 37,
+  "version": 0
+}

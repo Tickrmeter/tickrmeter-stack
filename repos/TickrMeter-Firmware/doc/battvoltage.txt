@@ -1,0 +1,6 @@
+3.6V    <-> lvl 8 OK
+3.45V   <-> lvl 5 OK boot
+3.40V   <-> lvl 4
+3.38V   <-> lvl 3
+3.33V   <-> lvl 2
+3.2V    <-> lvl 0

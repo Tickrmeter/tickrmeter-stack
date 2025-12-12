@@ -1,0 +1,40 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../pagemode/renderer"
+		},
+		{
+			"path": "../pagedisplay"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.js": "javascript",
+			"random": "cpp",
+			"system_error": "cpp",
+			"array": "cpp",
+			"chrono": "cpp",
+			"deque": "cpp",
+			"format": "cpp",
+			"forward_list": "cpp",
+			"initializer_list": "cpp",
+			"list": "cpp",
+			"ranges": "cpp",
+			"span": "cpp",
+			"vector": "cpp",
+			"xhash": "cpp",
+			"xstring": "cpp",
+			"xtree": "cpp",
+			"xutility": "cpp",
+			"string": "cpp",
+			"unordered_map": "cpp",
+			"unordered_set": "cpp",
+			"string_view": "cpp",
+			"ios": "cpp",
+			"*.tcc": "cpp"
+		}
+	}
+}
