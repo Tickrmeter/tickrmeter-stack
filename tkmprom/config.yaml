@@ -1,0 +1,68 @@
+# Configuration
+mqtt:
+  broker: "tcp://comm.tickrmeter.io:1883"
+  username: "tickrmeter-io"
+  password: "Ap0H/g476B#vIk9"
+  client_id: "tkmprom"
+  keep_alive: 60
+  clean_session: true
+  auto_reconnect: true
+  reconnect_delay: 5s
+  max_reconnect_delay: 300s
+  
+  # Topics to subscribe to
+  topics:
+    - "STOCKPRICEUPDATE"
+    - "DEVICESTATUS_RES"
+    - "TICKRMETERBOOT" 
+    - "DEVICE_BOOTED"
+    - "HTTPSTREAMSTOCKS"
+    - "+"  # All device-specific topics for responses
+
+# Logging configuration
+logging:
+  level: "info"     # debug, info, warn, error
+  format: "text"    # text or json
+  output: "stdout"  # stdout, stderr, or file path
+
+# Monitoring settings
+monitoring:
+  # How long to wait for a stock update response before timing out
+  request_timeout: 20s
+  
+  # How long before considering a device offline
+  device_timeout: 600s
+  
+  # How often to run cleanup tasks
+  cleanup_interval: 60s
+  
+  # Maximum number of latency samples to keep per symbol
+  max_latency_samples: 1000
+  
+  # Minimum number of requests before including symbol in slowest ranking
+  min_requests_for_ranking: 10
+
+# Prometheus metrics server
+prometheus:
+  port: 9091
+  path: "/metrics"
+  enable_pprof: false  # Set to true for performance debugging
+
+# Performance tuning
+performance:
+  # Buffer size for MQTT message processing
+  buffer_size: 1000
+  
+  # Number of worker goroutines for message processing
+  workers: 10
+  
+  # Maximum number of devices to track simultaneously
+  max_devices: 10000
+  
+  # Maximum number of symbols to track simultaneously  
+  max_symbols: 5000
+  
+# Optional: Enable metrics for the exporter itself
+self_monitoring:
+  enabled: true
+  namespace: "tkmprom"

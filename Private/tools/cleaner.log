@@ -1,0 +1,31 @@
+2025-05-12 15:52:56,268 - INFO - Using PROD environment: comm.tickrmeter.io
+2025-05-12 15:52:56,268 - INFO - Starting retained message discovery...
+2025-05-12 15:52:56,615 - INFO - Connected to MQTT broker: comm.tickrmeter.io
+2025-05-12 15:52:56,615 - INFO - Subscribed to topic: #
+2025-05-12 15:52:56,677 - INFO - Waiting for retained messages to be discovered...
+2025-05-12 15:53:06,678 - INFO - Found 1122 retained messages
+2025-05-12 15:53:07,575 - INFO - Cleaning 1122 retained messages...
+2025-05-12 15:53:14,792 - INFO - Progress: Cleared 50/1122 retained messages
+2025-05-12 15:53:22,673 - INFO - Progress: Cleared 100/1122 retained messages
+2025-05-12 15:53:30,475 - INFO - Progress: Cleared 150/1122 retained messages
+2025-05-12 15:53:38,255 - INFO - Progress: Cleared 200/1122 retained messages
+2025-05-12 15:53:46,084 - INFO - Progress: Cleared 250/1122 retained messages
+2025-05-12 15:53:53,751 - INFO - Progress: Cleared 300/1122 retained messages
+2025-05-12 15:54:02,937 - INFO - Progress: Cleared 350/1122 retained messages
+2025-05-12 15:54:10,796 - INFO - Progress: Cleared 400/1122 retained messages
+2025-05-12 15:54:18,645 - INFO - Progress: Cleared 450/1122 retained messages
+2025-05-12 15:54:26,423 - INFO - Progress: Cleared 500/1122 retained messages
+2025-05-12 15:54:34,179 - INFO - Progress: Cleared 550/1122 retained messages
+2025-05-12 15:54:41,923 - INFO - Progress: Cleared 600/1122 retained messages
+2025-05-12 15:54:49,819 - INFO - Progress: Cleared 650/1122 retained messages
+2025-05-12 15:54:57,629 - INFO - Progress: Cleared 700/1122 retained messages
+2025-05-12 15:55:06,783 - INFO - Progress: Cleared 750/1122 retained messages
+2025-05-12 15:55:14,694 - INFO - Progress: Cleared 800/1122 retained messages
+2025-05-12 15:55:22,487 - INFO - Progress: Cleared 850/1122 retained messages
+2025-05-12 15:55:30,170 - INFO - Progress: Cleared 900/1122 retained messages
+2025-05-12 15:55:37,875 - INFO - Progress: Cleared 950/1122 retained messages
+2025-05-12 15:55:45,559 - INFO - Progress: Cleared 1000/1122 retained messages
+2025-05-12 15:55:53,271 - INFO - Progress: Cleared 1050/1122 retained messages
+2025-05-12 15:56:02,264 - INFO - Progress: Cleared 1100/1122 retained messages
+2025-05-12 15:56:06,252 - INFO - Progress: Cleared 1122/1122 retained messages
+2025-05-12 15:56:08,259 - INFO - All retained messages have been cleared successfully
