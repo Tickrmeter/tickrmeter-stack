@@ -1,0 +1,82 @@
+import { AutocompleteField } from "@src/utility/input-fields";
+import { SYMBOL_TYPES } from "./helper2";
+import classNames from "classnames";
+import Flag from "react-world-flags";
+
+//! **************************************************************************************//
+//!    ONLY USING IN PLAYLIST RIGHT NOW, MOVE PLAYLIST TO NEW COMPONENT AND DELETE THIS   //
+//! **************************************************************************************//
+
+const { ApiEndPoint, API_PATHS } = require("@src/redux/api-paths");
+const { default: http } = require("@src/utility/http");
+
+export const handleAutoCompleteSearch = async (searchTerm, setSearchResults, type) => {
+  try {
+    if (searchTerm.length === 0) return setSearchResults([]);
+
+    let response = null;
+
+    switch (type) {
+      case SYMBOL_TYPES.CRYPTO:
+        response = await http.get(`${ApiEndPoint(API_PATHS.COIN_SEARCH)}?q=${searchTerm}`);
+        break;
+      case SYMBOL_TYPES.INDICES:
+        response = await http.get(`${ApiEndPoint(API_PATHS.INDICES_SEARCH)}?q=${searchTerm}`);
+        break;
+      case SYMBOL_TYPES.ETF:
+        response = await http.get(`${ApiEndPoint(API_PATHS.ETF_SEARCH)}?q=${searchTerm}`);
+        break;
+      case 6:
+        throw new Error("404:Commodity search not implemented yet");
+      default:
+        throw new Error("404:Invalid symbol type");
+    }
+
+    const data = response.data;
+    setSearchResults(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const IndiceETFAutoComplete = ({ onSearchClick, type }) => (
+  <AutocompleteField
+    name="symbolSearch"
+    onSearch={(searchTerm, setSearchResults) => handleAutoCompleteSearch(searchTerm, setSearchResults, type)}
+    onSearchClick={onSearchClick}
+    customRender={renderSymbolAutoComp}
+    displayKey={"symbol"}
+  />
+);
+
+export const renderSymbolAutoComp = (
+  item,
+  i,
+  filteredData,
+  activeSuggestion,
+  onSuggestionItemClick,
+  onSuggestionItemHover
+) => {
+  return (
+    <li
+      className={classNames(
+        "suggestion-item",
+        {
+          active: filteredData.indexOf(item) === activeSuggestion,
+        },
+        { "d-flex justify-content-between align-items-center": true }
+      )}
+      key={`suggestion-${i}`}
+      onClick={(e) => onSuggestionItemClick(item, e)}
+      onMouseEnter={() => onSuggestionItemHover(filteredData.indexOf(item))}
+    >
+      <div>
+        {item?.symbol} - {item?.name}
+      </div>
+      <div className="small w-50 text-right">
+        <strong>{item?.currency}</strong>
+        <br /> <Flag code={item?.country_code} height={24} />
+      </div>
+    </li>
+  );
+};
