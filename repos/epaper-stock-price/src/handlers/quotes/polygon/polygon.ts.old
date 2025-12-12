@@ -1,0 +1,601 @@
+import { SYMBOL_TYPE } from "../../../constants";
+import config from "../../../conf";
+
+import { HTTPClient, APISOURCES } from "../../../services/httpClass";
+import redis from "../../redis";
+import { getFormattedNumber, currencyList, emptyCurrencyObj, getFormattedNumber2, commaSepCurrencies } from "../helper";
+import { IGetQuoteFromAPI, IGetQuote } from "../helper/interfaces";
+import { calculateProfitLossPercentage } from "../percentCalculations";
+import { DateTime } from "luxon";
+import currencies from "../../../currency.json";
+import { print } from "..";
+
+const API_BASE_URL = "https://api.polygon.io";
+const API_KEY = config.app.polygon_apikey;
+
+const cryptoAPIURL = (cryptoCurr: string, fiatCurr: string) =>
+  `${API_BASE_URL}/v1/last/crypto/${cryptoCurr}/${fiatCurr}?&apiKey=${API_KEY}`;
+
+const buildURL = (apiURL: string) => `${API_BASE_URL}/${apiURL}&apiKey=${API_KEY}`;
+
+// ** Get the quote from Stock API */
+const getStockQuoteFromWebSocket: IGetQuoteFromAPI = async (params) => {
+  try {
+    const { symbol, gainTracking, currency, stockName = null } = params;
+
+    print(params.macAddress, `${params.requestId} - POLYGON Before CALLiNG Redis`);
+
+    const key = `POLYGON:STOCKS:${symbol.toUpperCase()}`;
+    const data = await redis.get(key);
+
+    print(params.macAddress, `${params.requestId} - POLYGON After CALLiNG Redis`);
+
+    let results = null;
+    if (!data) {
+      print(params.macAddress, `${params.requestId} - Data Not Found`);
+      const response = await getStockQuoteFromAPI(symbol);
+      if (!response.success) return response;
+      print(params.macAddress, `${params.requestId} - POLYGON Data SUCCESSFUL FROM API`);
+      results = response.data;
+    } else {
+      results = JSON.parse(data);
+    }
+
+    if (!results.p) return { success: false, error: "Error getting data", data: null };
+
+    const _currency = currencyList.find((c) => c.code === currency);
+
+    print(params.macAddress, `${params.requestId} - POLYGON  BEFORE CALCULATING PERCENTAGE`);
+    const { perValue, percent } = await calculateProfitLossPercentage(
+      symbol,
+      results.p,
+      gainTracking,
+      getStockPreviousClosing,
+      _currency
+    );
+
+    print(params.macAddress, `${params.requestId} - POLYGON  AFTER CALCULATING PERCENTAGE`);
+
+    // changed y to t as per client request
+    const timestamp = results.t / 1000;
+    //const date = formatDate(results.t / 1000000000, timeZone);
+    const price = getFormattedNumber(parseFloat(results.p.toString())); // round(results.p.toString(), 2);
+
+    print(params.macAddress, `${params.requestId} -POLYGON  AFTER FORMATTING PRICE`);
+
+    const response = {
+      symbol,
+      price: _currency.symbol + price,
+      p: Number(price),
+      percent,
+      date: timestamp,
+      perValue,
+      currency: _currency.symbol,
+      name: stockName || undefined,
+    };
+
+    print(params.macAddress, `${params.requestId} - POLYGON BEFORE RETURNING RESPONSE - ${JSON.stringify(response)}`);
+
+    return { success: true, data: response };
+  } catch (error) {
+    console.error("Polygon Stock: Error in getStockQuoteFromAPI", error);
+    return { success: false, error: error.message, data: null };
+  }
+};
+
+const getStockQuoteFromAPI = async (symbol: string) => {
+  const http = new HTTPClient();
+  try {
+    //const { symbol, gainTracking, currency, stockName = null } = params;
+
+    const url = buildURL(`v2/last/trade/${symbol.toUpperCase()}?`);
+
+    // const cSymbol = currSymbols[currency];
+
+    let response: any = await http.getAPI(url, APISOURCES.POLYGON, true);
+
+    if (response.status !== "OK") {
+      return {
+        success: false,
+        error: response?.error?.error || "API Error",
+        status: response?.status || 400,
+        data: null,
+      };
+    }
+
+    const { results } = response;
+
+    if (results) {
+      const data = {
+        p: results.p,
+        t: results.t,
+      };
+      redis.set(`POLYGON:STOCKS:${symbol.toUpperCase()}`, JSON.stringify(results), "EX", 60);
+      return {
+        success: true,
+        data,
+      };
+    }
+
+    return { success: false, error: "No data found", data: null };
+  } catch (error) {
+    console.error("Polygon Stock: Error in getStockQuoteFromAPI", error);
+    return { success: false, error: error.message, data: null };
+  } finally {
+    http.dispose();
+  }
+};
+
+// ** Get last day closing */
+const getStockPreviousClosing = async (symbol: string): Promise<number> => {
+  const http = new HTTPClient();
+  try {
+    const url = buildURL(`v2/aggs/ticker/${symbol.toUpperCase()}/prev?unadjusted=true`);
+
+    const response: any = await http.getAPI(url, APISOURCES.POLYGON, true, true);
+
+    if (response.status === "OK" && response?.resultsCount > 0) {
+      const previousPrice = response.results.find((f) => f.T === symbol);
+      if (previousPrice) {
+        return parseFloat(previousPrice.c.toString()) || 0;
+      }
+    }
+  } catch (error) {
+    console.error("Polygon Stock: Error in getStockPreviousClosing", error);
+    return 0;
+  } finally {
+    http.dispose();
+  }
+};
+
+//* ======================================== =========== ======================================== *//
+//* ======================================== CRYPTO API ======================================== *//
+//* ======================================== =========== ======================================== *//
+
+// ** Get the quote from Crypto API */
+const getCryptoQuoteFromAPI: IGetQuoteFromAPI = async (params) => {
+  const { symbol, gainTracking, currency } = params;
+  const http = new HTTPClient();
+
+  try {
+    const url = cryptoAPIURL(symbol, currency.toUpperCase());
+
+    const queryAPIResponse: any = await http.getAPI(url, APISOURCES.POLYGON);
+
+    const { last, status, error } = queryAPIResponse;
+
+    if (error) return { success: false, error, data: null };
+
+    if (status === "notfound") return { success: false, error: status, data: null };
+    if (status !== "success") return { success: false, error: status, data: null };
+
+    const { price, timestamp } = last;
+
+    if (price) {
+      const _currency = currencyList.find((c) => c.code === currency);
+
+      const { perValue, percent } = await calculateProfitLossPercentage(
+        `${symbol.toUpperCase()}${_currency.code}`,
+        price,
+        gainTracking,
+        getCrptoPreviousClosing,
+        _currency,
+        false
+      );
+
+      //const date = formatDate(timestamp / 1000, timeZone);
+      const quote = getFormattedNumber(price);
+
+      const response = {
+        symbol,
+        price: _currency.symbol + quote,
+        p: quote,
+        percent,
+        perValue,
+        date: timestamp / 1000,
+        currency: _currency.symbol,
+        name: symbol,
+      };
+
+      return { success: true, data: response };
+    }
+  } catch (error) {
+    console.error("Polygon Crypto: Error in getCryptoQuoteFromAPI", error);
+    return { success: false, data: null };
+  } finally {
+    http.dispose();
+  }
+};
+
+// ** Get last day closing for crypto*/
+const getCrptoPreviousClosing = async (currencyCode: string, symbol: string): Promise<number> => {
+  const http = new HTTPClient();
+  try {
+    const url = buildURL(`v2/aggs/ticker/X:${symbol.toUpperCase()}${currencyCode}/prev?adjusted=false`);
+
+    const response: any = await http.getAPI(url, APISOURCES.POLYGON, true, true);
+
+    if (response.status === "OK" && response?.resultsCount > 0) {
+      const previousPrice = response.results.find((f) => f.T === `X:${symbol.toUpperCase()}${currencyCode}`);
+
+      if (previousPrice) {
+        return parseFloat(previousPrice.c.toString()) || 0;
+      }
+    }
+  } catch (error) {
+    console.error("Polygon Crypto: Error in getCrptoPreviousClosing", error);
+    return 0;
+  } finally {
+    http.dispose();
+  }
+};
+
+//* ======================================== =========== ======================================== *//
+//* ======================================== INDICES API ======================================== *//
+//* ======================================== =========== ======================================== *//
+
+export const getIndicesQuoteFromAPI: IGetQuoteFromAPI = async (params) => {
+  const http = new HTTPClient();
+  try {
+    const { symbol, gainTracking, currency, stockName = null } = params;
+
+    //https://api.polygon.io/v3/snapshot/indices?ticker.any_of=I:NDX&limit=250&apiKey=qIUK8pCpjCJnB9sGn3LKD4AvmtsQGuAl
+
+    const querySymbol = symbol.toUpperCase().startsWith("I:") ? symbol.toUpperCase() : `I:${symbol.toUpperCase()}`;
+    const url = buildURL(`v3/snapshot/indices?ticker.any_of=${querySymbol}&limit=250`);
+
+    // const cSymbol = currSymbols[currency];
+
+    let response: any = await http.getAPI(url, APISOURCES.POLYGON, true);
+
+    if (response.status !== "OK") {
+      return {
+        success: false,
+        error: response?.error?.error || "API Error",
+        status: response?.status || 400,
+        data: null,
+      };
+    }
+
+    const { results } = response;
+
+    if (results.length > 0) {
+      const result = response.results[0];
+
+      if (result.error) {
+        return {
+          success: false,
+          error: result.message,
+          status: 400,
+          data: null,
+        };
+      }
+
+      const _currency = currencyList.find((c) => c.code === currency) || emptyCurrencyObj;
+      // const { perValue, percent } = await calculateProfitLossPercentage(
+      //   symbol,
+      //   results.p,
+      //   gainTracking,
+      //   getStockPreviousClosing,
+      //   _currency
+      // );
+
+      const perValue = result?.session?.change_percent || 0;
+      const percent = `1day ${perValue > 0 ? "+" : ""}${parseFloat(perValue.toFixed(2)).toString()}%`;
+
+      // changed y to t as per client request
+      const timestamp = result.t / 1000000000;
+      //const date = formatDate(result.t / 1000000000, timeZone);
+      const quote = Number(result.value.toString());
+      const price = getFormattedNumber(quote); // round(results.p.toString(), 2);
+
+      response = {
+        symbol,
+        price: _currency.symbol + price,
+        p: Number(price),
+        percent,
+        date: timestamp,
+        perValue,
+        currency: _currency.symbol,
+        name: stockName || undefined,
+      };
+
+      return { success: true, data: response };
+    }
+  } catch (error) {
+    console.error("Polygon Stock: Error in getStockQuoteFromAPI", error);
+    return { success: false, error: error.message, data: null };
+  } finally {
+    http.dispose();
+  }
+};
+
+//* ======================================== =========== ======================================== *//
+//* ======================================== FOREX API ======================================== *//
+//* ======================================== =========== ======================================== *//
+
+export const getForexQuote = async (symbolPair: string) => {
+  const http = new HTTPClient();
+  try {
+    const url = buildURL(`v1/last_quote/currencies/${symbolPair}?`);
+
+    let response: any = await http.getAPI(url, APISOURCES.POLYGON, true);
+    console.log(url, response);
+    if (response.status !== "success") {
+      return {
+        success: false,
+        error: response?.error?.error || "API Error",
+        status: response?.status || 400,
+        data: null,
+      };
+    }
+
+    if (!response.last) return { success: false, error: "No data found", data: null };
+
+    return { success: true, data: response };
+  } catch (error) {
+    console.error("Polygon Stock: Error in getForexQuote", error);
+    return { success: false, error: error.message, data: null };
+  } finally {
+    http.dispose();
+  }
+};
+
+export const getForexQuoteFromAPI: IGetQuoteFromAPI = async (params) => {
+  // const http = new HTTPClient();
+  try {
+    const { symbol, gainTracking, currency, stockName = null } = params;
+
+    const symbolPair = `${symbol.toUpperCase()}/${currency.toUpperCase()}`;
+
+    //https://api.polygon.io/v2/snapshot/locale/global/markets/forex/tickers/C:EURUSD?apiKey=*
+    //const url = buildURL(`v2/snapshot/locale/global/markets/forex/tickers/${symbolPair}`);
+    //    https://api.polygon.io/v1/last_quote/currencies/AUD/USD?apiKey=qIUK8pCpjCJnB9sGn3LKD4AvmtsQGuAl
+
+    const urlResponse = await getForexQuote(symbolPair);
+
+    if (!urlResponse.success) return urlResponse;
+
+    // const url = buildURL(`v1/last_quote/currencies/${symbolPair}?`);
+
+    // // const cSymbol = currSymbols[currency];
+
+    // let response: any = await http.getAPI(url, APISOURCES.POLYGON, true);
+
+    // if (response.status !== "success") {
+    //   return {
+    //     success: false,
+    //     error: response?.error?.error || "API Error",
+    //     status: response?.status || 400,
+    //     data: null,
+    //   };
+    // }
+
+    // if (!response.last) return { success: false, error: "No data found", data: null };
+
+    const { last } = urlResponse.data;
+
+    const _currency = currencies[currency];
+
+    const decimalChar = commaSepCurrencies.includes(_currency.code) ? "," : ".";
+
+    const timestamp = last.timestamp / 1000;
+    const quote = (last.bid + last.ask) / 2;
+
+    const price = getFormattedNumber2(quote, 4, decimalChar);
+
+    const { perValue, percent } = await calculateProfitLossPercentage(
+      symbolPair,
+      quote,
+      gainTracking,
+      getForexPreviousClosing,
+      _currency
+    );
+
+    const response = {
+      symbol: symbolPair,
+      price: price,
+      p: Number(price),
+      percent,
+      date: timestamp,
+      perValue,
+      currency: _currency.symbol,
+      name: stockName || undefined,
+    };
+
+    return { success: true, data: response };
+  } catch (error) {
+    console.error("Polygon Stock: Error in getStockQuoteFromAPI", error);
+    return { success: false, error: error.message, data: null };
+  }
+};
+
+// ** Get forex last day closing */
+const getForexPreviousClosing = async (symbol: string): Promise<number> => {
+  const http = new HTTPClient();
+  try {
+    //https://api.polygon.io/v2/aggs/ticker/C:EURUSD/prev?adjusted=true&apiKey=*
+    const symbolPair = `C:${symbol.toUpperCase().replace("/", "")}`;
+    const url = buildURL(`v2/aggs/ticker/${symbolPair}/prev?adjusted=true`);
+
+    const response: any = await http.getAPI(url, APISOURCES.POLYGON, true, true);
+
+    if (response.status === "OK" && response?.resultsCount > 0) {
+      const previousPrice = response.results.find((f) => f.T === symbolPair);
+      if (previousPrice) {
+        return parseFloat(previousPrice.c.toString()) || 0;
+      }
+    }
+  } catch (error) {
+    console.error("Polygon Stock: Error in getForexPreviousClosing", error);
+    return 0;
+  } finally {
+    http.dispose();
+  }
+};
+
+//* ======================================== =========== ======================================== *//
+//* ======================================== OPTIONS API ======================================== *//
+//* ======================================== =========== ======================================== *//
+//https://api.polygon.io/v3/quotes/O:SPY241220P00720000?limit=1&apiKey=qIUK8pCpjCJnB9sGn3LKD4AvmtsQGuAl
+
+export const getOptionsQuoteFromAPI: IGetQuoteFromAPI = async (params) => {
+  const http = new HTTPClient();
+  try {
+    const { symbol, gainTracking, currency, stockName = null } = params;
+    const url = buildURL(`v3/quotes/O:${symbol.toUpperCase()}?limit=1`);
+
+    let response: any = await http.getAPI(url, APISOURCES.POLYGON, true);
+
+    if (response.status !== "OK") {
+      return {
+        success: false,
+        error: response?.error?.error || "API Error",
+        status: response?.status || 400,
+        data: null,
+      };
+    }
+
+    const { results } = response;
+
+    if (results.length === 0) return { success: false, error: "No data found", data: null };
+
+    const optionsResult = results[0];
+
+    const _currency = currencyList.find((c) => c.code === currency);
+    let quote = (Number(optionsResult.bid_price) + Number(optionsResult.ask_price)) / 2;
+
+    if (quote === 0) {
+      const lastTradeUrl = buildURL(`v2/last/trade/O:${symbol.toUpperCase()}?`);
+      const lastTradeResponse: any = await http.getAPI(lastTradeUrl, APISOURCES.POLYGON, true);
+      if (lastTradeResponse.status !== "OK") {
+        return {
+          success: false,
+          error: response?.error?.error || "API Error",
+          status: response?.status || 400,
+          data: null,
+        };
+      }
+
+      quote = lastTradeResponse.results.p;
+    }
+
+    const price = _currency.symbol + getFormattedNumber(quote); // round(results.p.toString(), 2);
+
+    const { perValue, percent } = await calculateProfitLossPercentage(
+      symbol,
+      quote,
+      gainTracking,
+      getOptionsPreviousClosing,
+      _currency
+    );
+
+    const parsedOptionTicker = parseOptionTicker(symbol);
+
+    response = {
+      symbol: parsedOptionTicker?.underlyingStock,
+      price,
+      p: quote,
+      percent: percent,
+      date: formatOptionDetails(parsedOptionTicker),
+      perValue: perValue,
+      currency: _currency.symbol,
+      name: stockName || symbol || undefined,
+    };
+
+    return { success: true, data: response };
+  } catch (error) {
+    console.error("Polygon Stock: Error in getOptionsQuoteFromAPI", error);
+    return { success: false, error: error.message, data: null };
+  } finally {
+    http.dispose();
+  }
+};
+
+const getOptionsPreviousClosing = async (symbol: string): Promise<number> => {
+  const http = new HTTPClient();
+  try {
+    const url = buildURL(`v2/aggs/ticker/O:${symbol.toUpperCase()}/prev?unadjusted=true`);
+
+    const response: any = await http.getAPI(url, APISOURCES.POLYGON, true, true);
+
+    if (response.status === "OK" && response?.resultsCount > 0) {
+      const previousPrice = response.results.find((f) => f.T === `O:${symbol}`);
+
+      if (previousPrice) {
+        return parseFloat(previousPrice.c.toString()) || 0;
+      }
+    }
+  } catch (error) {
+    console.error("Polygon Stock: Error in getOptionsPreviousClosing", error);
+    return 0;
+  } finally {
+    http.dispose();
+  }
+};
+//* ======================================== =========== ======================================== *//
+
+export const GetPolygonQuote: IGetQuote = async (params) => {
+  const { symbolType, symbol, currency, gainTracking, multiplier, name } = params;
+
+  const paramObj = { symbol, stockName: name, gainTracking, currency, multiplier };
+
+  return symbolType === SYMBOL_TYPE.STOCK
+    ? await getStockQuoteFromWebSocket(paramObj)
+    : symbolType === SYMBOL_TYPE.INDICES
+    ? await getIndicesQuoteFromAPI(paramObj)
+    : symbolType === SYMBOL_TYPE.CRYPTO
+    ? await getCryptoQuoteFromAPI(paramObj)
+    : symbolType === SYMBOL_TYPE.FOREX
+    ? await getForexQuoteFromAPI(paramObj)
+    : symbolType === SYMBOL_TYPE.OPTIONS
+    ? await getOptionsQuoteFromAPI(paramObj)
+    : { success: false, data: null, error: "Invalid symbol type" };
+};
+
+//***========================================================= */
+
+const parseOptionTicker = (ticker) => {
+  const regex = /^([A-Z]+)(\d{6})([CP])(\d{8,9})$/;
+  const match = ticker.match(regex);
+
+  if (!match) {
+    console.error("Invalid option ticker format");
+    return null;
+  }
+
+  const [, underlyingStock, expirationString, optionTypeChar, strikePriceString] = match;
+
+  const year = Number(expirationString.slice(0, 2)) + 2000;
+  const month = Number(expirationString.slice(2, 4));
+  const day = Number(expirationString.slice(4, 6));
+  const expirationDate = DateTime.utc(year, month, day);
+
+  const optionType = optionTypeChar === "C" ? "call" : "put";
+
+  // Handle strike prices up to 999,999.99
+  let strikePrice;
+  if (strikePriceString.length === 8) {
+    strikePrice = Number(strikePriceString.slice(0, 5)) + Number(strikePriceString.slice(5)) / 1000;
+  } else if (strikePriceString.length === 9) {
+    strikePrice = Number(strikePriceString.slice(0, 6)) + Number(strikePriceString.slice(6)) / 1000;
+  }
+
+  return {
+    ticker,
+    underlyingStock,
+    expirationDate,
+    optionType,
+    strikePrice,
+  };
+};
+
+const formatOptionDetails = (optionDetails) => {
+  const { expirationDate, optionType, strikePrice } = optionDetails;
+
+  const formattedDate = expirationDate.toFormat("MMM dd ''yy");
+  const capitalizedOptionType = optionType.charAt(0).toUpperCase() + optionType.slice(1);
+  const formattedStrikePrice = strikePrice % 1 === 0 ? strikePrice.toFixed(0) : strikePrice.toFixed(2);
+
+  return `${formattedDate} ${formattedStrikePrice} ${capitalizedOptionType}`;
+};

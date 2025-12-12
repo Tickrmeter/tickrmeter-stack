@@ -1,0 +1,13 @@
+[
+  {
+    "cc": "dk",
+    "country": "Denmark",
+    "currency": "EUR",
+    "exchange": "EQUITY",
+    "stream": "Morningstar",
+    "exchange_timezone": "Europe/Rome",
+    "instrument_name": "JULIUS",
+    "instrument_type": "Equities",
+    "symbol": "F00000Q6YT"
+  }
+]
